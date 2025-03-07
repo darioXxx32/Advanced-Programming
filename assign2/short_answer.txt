@@ -1,8 +1,3 @@
-Before submitting this file, make sure that there are no more TODO
-placeholders remaining in the file (and remove this comment too).
-
-Marriage Pact
--------------
 
 Q1. It is your choice to use either an ordered or unordered set. In a few sentences, what are some of the tradeoffs between the two? Additionally, please give an example (that has not been shown in lecture) of a valid hash function that could be used to hash student names for an unordered set.
 A1:An ordered set (using std::set) automatically keeps its elements sorted, which is very useful when you need to iterate through the data in a defined order or perform range queries; however, this comes at the cost of slower insertions and deletions (O(log n)) because it maintains a balanced tree structure. On the other hand, an unordered set (using std::unordered_set) offers average constant time (O(1)) operations for insertion, deletion, and lookup because it uses a hash table, but it does not maintain any particular order, and in worst-case scenarios (due to hash collisions), the operations can degrade to O(n).
