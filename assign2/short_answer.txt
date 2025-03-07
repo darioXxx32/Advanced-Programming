@@ -1,0 +1,25 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Marriage Pact
+-------------
+
+Q1. It is your choice to use either an ordered or unordered set. In a few sentences, what are some of the tradeoffs between the two? Additionally, please give an example (that has not been shown in lecture) of a valid hash function that could be used to hash student names for an unordered set.
+A1:An ordered set (using std::set) automatically keeps its elements sorted, which is very useful when you need to iterate through the data in a defined order or perform range queries; however, this comes at the cost of slower insertions and deletions (O(log n)) because it maintains a balanced tree structure. On the other hand, an unordered set (using std::unordered_set) offers average constant time (O(1)) operations for insertion, deletion, and lookup because it uses a hash table, but it does not maintain any particular order, and in worst-case scenarios (due to hash collisions), the operations can degrade to O(n).
+Here’s an example of a valid hash function 
+This function splits a student’s full name into first and last names, computes their individual hash values using std::hash, and then combines them using XOR (^) and a left bit-shift to mix the values:
+struct StudentNameHash {
+    size_t operator()(const std::string &name) const {
+        size_t pos = name.find(" ");
+        if (pos == std::string::npos) {
+            return std::hash<std::string>{}(name);
+        }
+        std::string first = name.substr(0, pos);
+        std::string last = name.substr(pos + 1);
+        // Combine the hash values of 'first' and 'last' using XOR and bit shifting.
+        return std::hash<std::string>{}(first) ^ (std::hash<std::string>{}(last) << 1);
+    }
+};
+
+Q2. Note that we are saving pointers to names in the queue, not names themselves. Why might this be desired in this problem? What happens if the original set where the names are stored goes out of scope and the pointers are referenced?
+A2:Saving pointers to names instead of copying the entire strings can be beneficial because it avoids duplicating data, which reduces memory usage and improves performance—especially if the names are long or if there are many of them. By storing just pointers, we ensure that there is only one copy of each name in the original set, and the queue simply holds references to these names. However, if the original set goes out of scope (for example, if the function that created it ends and the set is destroyed), the pointers in the queue would become dangling pointers. Dereferencing these pointers would lead to undefined behavior, such as crashes or corrupted data, since they point to memory that is no longer valid.
