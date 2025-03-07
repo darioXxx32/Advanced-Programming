@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_set>
 
-std::string kYourName = "Alice Johnson"; // Cambia esto a tu nombre completo
+std::string kYourName = "Dario Pomasqui"; // Cambia esto a tu nombre completo
 
 /**
  * Lee un archivo y devuelve un conjunto de nombres de applicants.
