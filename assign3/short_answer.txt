@@ -1,0 +1,4 @@
+Q1. What’s const-correctness and why is it important?
+A1 Const correctness involves using `const` correctly in functions and variables to ensure that an object's state doesn't change when it shouldn't. It helps us avoid errors, increases code security, and reduces the possibility of errors by clearly showing the program's intentions and allowing us to use functions that don't modify data with const objects.
+Q2. Is your class const-correct? How do you know?
+A2. Yes, my class is const-compliant, as all getters are marked as const, ensuring that the object's state isn't modified when queried. This also allows these methods to be called on objects declared as const, reinforcing the integrity and predictability of the class's behavior.
