@@ -1,20 +1,20 @@
 #include <iostream>
 #include <string>
-#include <concepts>  // Para usar los conceptos std::integral y std::floating_point
-
+#include <concepts>  
 using namespace std;
+/*Dario Pomasqui/
 
 /* -------------------------------------------------------------------------
  * PART 1: BASIC TEMPLATE FUNCTIONS
  * ------------------------------------------------------------------------- */
 
-// ✅ Task 1.1: Write a Simple Template Function
+//  Task 1.1: Write a Simple Template Function
 template <typename T>
 T maxValue(T a, T b) {
     return (a > b) ? a : b;
 }
 
-// ✅ Task 1.2: Overload a Template Function (Tres parámetros)
+//  Task 1.2: Overload a Template Function (Tres parámetros)
 template <typename T>
 T maxValue(T a, T b, T c) {
     return maxValue(a, maxValue(b, c));
@@ -24,7 +24,7 @@ T maxValue(T a, T b, T c) {
  * PART 2: CONCEPTS
  * ------------------------------------------------------------------------- */
 
-// ✅ Task 2.1: Create a Template with a Concept
+//  Task 2.1: Create a Template with a Concept
 // 1) Crear un concepto "Numeric" que acepte tipos integrales o de punto flotante.
 template <typename T>
 concept Numeric = integral<T> || floating_point<T>;
@@ -39,7 +39,7 @@ T add(T a, T b) {
  * PART 3: VARIADIC TEMPLATES
  * ------------------------------------------------------------------------- */
 
-// ✅ Task 3.1: Write a Variadic Template Function (printAll)
+//  Task 3.1: Write a Variadic Template Function (printAll)
 template <typename T>
 void printAll(T t) {
     std::cout << t << std::endl;
@@ -51,7 +51,7 @@ void printAll(T t, Args... args) {
     printAll(args...);
 }
 
-// ✅ Task 3.2: Variadic Template for Summation
+//  Task 3.2: Variadic Template for Summation
 // Caso base: un solo elemento
 template <typename T>
 T sum(T t) {
@@ -68,7 +68,7 @@ T sum(T t, Args... args) {
  * PART 4: TEMPLATE METAPROGRAMMING
  * ------------------------------------------------------------------------- */
 
-// ✅ Task 4.1: Compile-Time Factorial Using Templates
+//  Task 4.1: Compile-Time Factorial Using Templates
 template <int N>
 struct Factorial {
     static constexpr int value = N * Factorial<N - 1>::value;
@@ -80,7 +80,7 @@ struct Factorial<0> {
     static constexpr int value = 1;
 };
 
-// ✅ Task 4.2: Fibonacci Series Using Template Metaprogramming
+//  Task 4.2: Fibonacci Series Using Template Metaprogramming
 template <int N>
 struct Fibonacci {
     static constexpr int value = Fibonacci<N - 1>::value + Fibonacci<N - 2>::value;
@@ -136,13 +136,13 @@ int main() {
     // Salida esperada: 1 2.5 32 Hello c
 
     printAll("Hola mundo");
-    // Salida esperada: Hola mundo
+    
 
     cout << "Suma de 1, 2, 3, 4, 5: " 
-         << sum(1, 2, 3, 4, 5) << endl;                   // 15
+         << sum(1, 2, 3, 4, 5) << endl;                   
 
     // PART 4: Pruebas de Template Metaprogramming
-    cout << "Factorial de 5: " << fact5 << endl;          // 120
+    cout << "Factorial de 5: " << fact5 << endl;          
     cout << "Fibonacci(10): " << fib10 << endl;           // 55
 
     return 0;
