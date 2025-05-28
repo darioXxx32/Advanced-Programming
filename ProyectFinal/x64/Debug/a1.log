@@ -1,0 +1,6 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (a1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  a1.cpp
+C:\Users\HP\source\repos\a1\a1\a1.cpp(22,22): warning C4566: character represented by universal-character-name '\u2705' cannot be represented in the current code page (1252)
+  a1.vcxproj -> C:\Users\HP\source\repos\a1\x64\Debug\Modelo.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
